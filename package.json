@@ -1,24 +1,7 @@
 {
-  "name": "cars-list-scrapping",
-  "version": "1.0.0",
-  "description": "Data Scrapping for Cars",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hamza172/Cars-List-Scrapping.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hamza172/Cars-List-Scrapping/issues"
-  },
-  "homepage": "https://github.com/hamza172/Cars-List-Scrapping#readme",
   "dependencies": {
-    "puppeteer": "^19.2.2",
-    "puppeteer-extra": "^3.3.4",
-    "puppeteer-extra-plugin-stealth": "^2.11.1"
+    "dotenv": "^16.0.3",
+    "mongodb": "^4.12.1",
+    "puppeteer-extra": "^3.3.4"
   }
 }

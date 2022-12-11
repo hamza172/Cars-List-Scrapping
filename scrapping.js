@@ -49,8 +49,17 @@ async function scrapping(id){
             document.querySelectorAll(".product_box .Screenshots .ImgBox img")
           ).map((image) => image.getAttribute("src"));
         return {"images": srcs,"fields": fields}
-    })    
-    result['images'] = data.images
+    })
+    let temparrayimg=[]
+    for(let i = 0;i<data.images.length;i++){
+        data.images[i]
+        Clipper(source)
+        .clear(0, 0, 25, 25)
+        .toDataURL(function(dataUrl) {
+            temparrayimg(dataUrl)
+        });
+    }    
+    result['images'] = temparrayimg
     let fields = data.fields
     await page.close()
     await browser.close()

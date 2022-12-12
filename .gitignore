@@ -1,5 +1,5 @@
 <<<<<<< Updated upstream
-node_modules/*
+node_modules/
 node_modules\
 node_modules
 node_modules/yaml/types/set.js

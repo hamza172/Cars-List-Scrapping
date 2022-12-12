@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-extra')
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
+var im = require('imagemagick');
 
 
 async function start(url,fields){
@@ -52,12 +53,16 @@ async function scrapping(id){
     })
     let temparrayimg=[]
     for(let i = 0;i<data.images.length;i++){
-        data.images[i]
-        Clipper(source)
-        .clear(0, 0, 25, 25)
-        .toDataURL(function(dataUrl) {
-            temparrayimg(dataUrl)
+        source = data.images[i]
+        
+        await Clipper(source, function() {
+            this .clear(50, 50, 0, 25)
+            .toDataURL(function(dataUrl) {
+                temparrayimg(dataUrl)
+            });
         });
+       
+        
     }    
     result['images'] = temparrayimg
     let fields = data.fields

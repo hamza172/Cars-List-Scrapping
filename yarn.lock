@@ -456,10 +456,10 @@
   "resolved" "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
   "version" "1.2.1"
 
-"image-clipper@^0.4.4":
-  "integrity" "sha512-ukiEzCwRES9mrlrp16kRCIx0HGfa3C4LXUR9grf0ueyk06cU1WDpBiu2lwvSf+HvUOTG7uFXSZKf0b9bIsO81A=="
-  "resolved" "https://registry.npmjs.org/image-clipper/-/image-clipper-0.4.4.tgz"
-  "version" "0.4.4"
+"imagemagick@^0.1.3":
+  "integrity" "sha512-HIwwW10UdwsWcHETt5BPrnEkaJSFLiW1dYDlPYV0EXyj2zJY28iXimPWlZDsOpxVghmF5EuUjYOvJZhZS4Y10g=="
+  "resolved" "https://registry.npmjs.org/imagemagick/-/imagemagick-0.1.3.tgz"
+  "version" "0.1.3"
 
 "import-fresh@^3.2.1":
   "integrity" "sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw=="
@@ -734,7 +734,7 @@
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"
 
-"puppeteer-core@19.4.0":
+"puppeteer-core@*", "puppeteer-core@19.4.0":
   "integrity" "sha512-gG/jxseleZStinBn86x8r7trjcE4jcjx1hIQWOpACQhquHYMuKnrWxkzg+EDn8sN3wUtF/Ry9mtJgjM49oUOFQ=="
   "resolved" "https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-19.4.0.tgz"
   "version" "19.4.0"
@@ -788,7 +788,7 @@
     "debug" "^4.1.1"
     "merge-deep" "^3.0.1"
 
-"puppeteer-extra@^3.3.4":
+"puppeteer-extra@*", "puppeteer-extra@^3.3.4":
   "integrity" "sha512-fN5pHvSMJ8d1o7Z8wLLTQOUBpORD2BcFn+KDs7QnkGZs9SV69hcUcce67vX4L4bNSEG3A0P6Osrv+vWNhhdm8w=="
   "resolved" "https://registry.npmjs.org/puppeteer-extra/-/puppeteer-extra-3.3.4.tgz"
   "version" "3.3.4"
@@ -797,7 +797,7 @@
     "debug" "^4.1.1"
     "deepmerge" "^4.2.2"
 
-"puppeteer@^19.4.0":
+"puppeteer@*", "puppeteer@^19.4.0":
   "integrity" "sha512-sRzWEfFSZCCcFUJflGtYI2V7A6qK4Jht+2JiI2LZgn+Nv/LOZZsBDEaGl98ZrS8oEcUA5on4p2yJbE0nzHNzIg=="
   "resolved" "https://registry.npmjs.org/puppeteer/-/puppeteer-19.4.0.tgz"
   "version" "19.4.0"

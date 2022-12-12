@@ -3,6 +3,8 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
 const sharp = require('sharp');
 const  fetch = require('node-fetch')
+const fs = require('fs');
+
 
 async function start(url,fields){
     const browser = await puppeteer.launch({
@@ -56,8 +58,19 @@ async function scrapping(id){
         let source = data.images[i]
         const fimg = await fetch(source)
         const fimgb = await fimg.buffer()
-    
-        let src= await sharp(fimgb).trim('#fff').toFormat('jpeg').toBuffer();
+        const metadata = await sharp(fimgb).metadata()
+        let src= await sharp(fimgb).extract({
+                top: 20,
+                left:0,
+                height: metadata.height-20,
+                width: metadata.width,
+            }).toFormat('jpeg').toBuffer();
+        fs.writeFile('data.txt', "data:image/jpeg" + ";base64," + src.toString('base64'), err => {
+            if (err) {
+              console.error(err);
+            }
+            // file written successfully
+        });
         temparrayimg.push("data:image/jpeg" + ";base64," + src.toString('base64'))
     }    
     result['images'] = temparrayimg

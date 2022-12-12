@@ -18,21 +18,10 @@ async function imageConvert(url){
 
 
 async function processing(){
-    // var result = await scrapping("21231")
-    images = [
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-1.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-2.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-3.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-4.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-5.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-6.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-7.jpeg',
-        'https://qesot.com/img_dir/cars/9843-bmw-6-series-e63-2005-8.jpeg'
-      ]
-    // images.map(async img=>{
-    //     img = await imageConvert(img)
-    // })
-    result = await imageConvert(images[0])
+    var result = await scrapping("21231")
+    result.images.map(async img=>{
+        img = await imageConvert(img)
+    })
     console.log(result)
 }
 processing()

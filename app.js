@@ -21,17 +21,19 @@ function loadData(table, data, car_id, client){
         car_id, bodytype, brand, doors, endofproduction, generation, model, modification, "powertrainArchitecture", seats, startofproduction, acceleration100, acceleration60, acceleration62, "fuelType", "fuelconsumptionCombined", "fuelconsumptionExtraurban", "fuelconsumptionUrban", maximumspeed, dragcoefficient, fronttrack, height, length, minimumturningcircle, "rearTrack", wheelbase, width, compressionratio, "cylinderBore", engineaspiration, enginedisplacement, engineoilcapacity, "fuelSystem", "modelEngine", numberofcylinders, numberofvalvespercylinder, positionofcylinders, power, torque, drivewheel, frontbrakes, frontsuspension, "numberofGears", powersteering, rearbrakes, rearsuspension, steeringtype, tiressize, wheelrimssize, fueltankcapacity, "kerbWeight", maxload, maxweight, hotcar)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52, $53, $54);
     `
-    values = Object.values(data);
-    values = [car_id].concat(values);
-    values = values.concat("false");
-    console.log(values)
+    // values = Object.values(data);
+    // values = [car_id].concat(values);
+    // values = values.concat("false");
+    values =[car_id,data['Bodytype'],data['Brand'],data['Doors'],data['Endofproduction'],data['Generation'],data['Model'],data['Modification(Engine)'],data['PowertrainArchitecture'],data['Seats'],data['Startofproduction'],data['Acceleration0-100km/h'],data['Acceleration0-60mph'],data['Acceleration0-62mph'],data['FuelType'],data['Fuelconsumption(economy)-combined'],data['Fuelconsumption(economy)-extraurban'],data['Fuelconsumption(economy)-urban'],data['Maximumspeed'],data['Dragcoefficient(Cd)'],data['Fronttrack'],data['Height'],data['Length'],data['Minimumturningcircle(turningdiameter)'],data['Rear(Back)track'],data['Wheelbase'],data['Width'],data['Compressionratio'],data['CylinderBore'],data['Engineaspiration'] ,data['Enginedisplacement'] ,data['Engineoilcapacity'] ,data['FuelSystem'] ,data['ModelEngine'] ,data['Numberofcylinders'] ,data['Numberofvalvespercylinder'] ,data['Positionofcylinders'] ,data['Power'] ,data['Torque'] ,data['Drivewheel'] ,data['Frontbrakes'] ,data['Frontsuspension'] ,data['NumberofGears(automatictransmission)'] ,data['Powersteering'] ,data['Rearbrakes'] ,data['Rearsuspension'] ,data['Steeringtype'] ,data['Tiressize'] ,data['Wheelrimssize'] ,data['Fueltankcapacity'] ,data['KerbWeight'] ,data['Maxload'],data['Maxweight'] ,"false"]
+    // console.log(values.length)
+    // console.log(values)
     client.query(query, values)
         // .then((res) => console.log(res))
         .catch((err) => console.error('Error executing query', err.stack))
 }
 
 async function processing(){
-    car_id = "21231"
+    car_id = "21231" // 21231, 44442
     var result = await scrapping(car_id)
     console.log("Data scrapping done")
 
@@ -48,7 +50,7 @@ async function processing(){
     client.connect()
     .then(() => console.log('connected with postgres'))
     .catch((err) => console.error('connection error', err.stack))
-    
+    // console.log(result['en'])
     loadImages(result.images, car_id, client)
     let languages = ['en','fr','es','ru','de','it','gr','tr','ro','fi','se','no','pl']
     for (let i=0;i<languages.length;i++){

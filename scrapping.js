@@ -12,7 +12,7 @@ async function start(url,fields){
         executablePath: require('puppeteer').executablePath()
     })
     const page = await browser.newPage()
-    await page.goto(url)
+    await page.goto(url,{ timeout: 0})
     let object = {}
     const data = await page.evaluate(()=> {
         const data1 = Array.from(
@@ -32,12 +32,14 @@ async function start(url,fields){
 
 async function scrapping(id){
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: true, 
         executablePath: require('puppeteer').executablePath()
     })
     const page = await browser.newPage()
     let result = {}
-    await page.goto('https://qesot.com/cars/en/product/'+id+'/')
+    let status = await page.goto('https://qesot.com/cars/en/product/'+id+'/', { timeout: 0});
+    status = status.status();
+    console.log(status)
     const data = await page.evaluate(()=> {
         const  data = document.querySelectorAll("body > main > div.Table_Data > div.Data > div > div > table > tbody > tr > td:nth-child(1)")
         let fields= []
@@ -54,7 +56,13 @@ async function scrapping(id){
         return {"images": srcs,"fields": fields}
     })
     let temparrayimg=[]
-    for(let i = 0;i<data.images.length;i++){
+    let length
+    if (data.images.length<10){
+        length = data.images.length
+    } else{
+        length = 10
+    }
+    for(let i = 0;i<length;i++){
         let source = data.images[i]
         const fimg = await fetch(source)
         const fimgb = await fimg.buffer()
@@ -65,12 +73,6 @@ async function scrapping(id){
                 height: metadata.height-20,
                 width: metadata.width,
             }).toFormat('jpeg').toBuffer();
-        fs.writeFile('data.txt', "data:image/jpeg" + ";base64," + src.toString('base64'), err => {
-            if (err) {
-              console.error(err);
-            }
-            // file written successfully
-        });
         temparrayimg.push("data:image/jpeg" + ";base64," + src.toString('base64'))
     }    
     result['images'] = temparrayimg
@@ -79,6 +81,7 @@ async function scrapping(id){
     await browser.close()
 
     let languages = ['en','fr','es','ru','de','it','gr','tr','ro','fi','se','no','pl']
+    
     for (let i=0;i<languages.length;i++){
         result[languages[i]] = await start('https://qesot.com/cars/'+languages[i]+'/product/'+id+'/',fields)
     }

@@ -41,7 +41,7 @@ async function scrapping(id){
     let result = {}
     let status = await page.goto('https://qesot.com/cars/en/product/'+id+'/', { timeout: 0});
     status = status.status();
-    console.log(status)
+    console.log("status",status)
     const data = await page.evaluate(()=> {
         const  data = document.querySelectorAll("body > main > div.Table_Data > div.Data > div > div > table > tbody > tr > td:nth-child(1)")
         let fields= []

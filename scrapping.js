@@ -9,7 +9,8 @@ const fs = require('fs');
 async function start(url,fields){
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: require('puppeteer').executablePath()
+        executablePath: require('puppeteer').executablePath(),
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage()
     await page.goto(url,{ timeout: 0})
@@ -33,7 +34,8 @@ async function start(url,fields){
 async function scrapping(id){
     const browser = await puppeteer.launch({
         headless: true, 
-        executablePath: require('puppeteer').executablePath()
+        executablePath: require('puppeteer').executablePath(),
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage()
     let result = {}
